@@ -5,7 +5,7 @@ const dataHelper = require('./data-helper');
 const addContact = (dbPath, contacts, newContact) => {
     let status = {isDone: null, error: null};
     newContact.name = preProcessing.formatName(newContact.name);
-    if(validate.phoneChecked(newContact.phone)){
+    if(validate.phoneChecked(newContact.phone)) {
         newContact.id = contacts.autoIncrement;
         contacts.list.push(newContact);
         let save = dataHelper.saveData(contacts.autoIncrement + 1, contacts.list, dbPath);
@@ -25,7 +25,7 @@ const addContact = (dbPath, contacts, newContact) => {
 const updateContact = (dbPath, contacts, newContact, contactId) => {
     let status = {isDone: null, error: null};
     newContact.name = preProcessing.formatName(newContact.name);
-    if(validate.phoneChecked(newContact.phone)){
+    if(validate.phoneChecked(newContact.phone)) {
         let index = contacts.list.findIndex((item) => {
             return item.id == contactId;
         });

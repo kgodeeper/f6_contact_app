@@ -24,7 +24,7 @@ const userChoose = () => {
 const inputContact = () => {
     let name = readline.question("Contact's name: ");
     let phone;
-    do{
+    do {
         phone = readline.question("Phone number: ");
         if(validate.phoneChecked(phone)) {
             return {
@@ -34,7 +34,7 @@ const inputContact = () => {
         } else {
             console.log("Phone is invalid");
         }
-    }while(1);
+    } while(1);
 }
 
 // main
@@ -43,7 +43,7 @@ const inputContact = () => {
     let choose;
     do {
         choose = userChoose();
-        loop: switch(choose){
+        loop: switch(choose) {
             case 1: {
                 console.table(contacts.list);
                 break;
@@ -51,9 +51,9 @@ const inputContact = () => {
             case 2: {
                 let contact = inputContact();
                 let add = control.addContact(DATABASE_PATH, contacts, contact);
-                if(add.isDone){
+                if(add.isDone) {
                     console.info("ADD SUCCESS !!!");
-                }else{
+                } else {
                     console.error()(`Opps: ${add.error}`);
                 }
                 break;
@@ -62,9 +62,9 @@ const inputContact = () => {
                 let contactId = readline.question("ContactID: ");
                 let contact = inputContact();
                 let update = control.updateContact(DATABASE_PATH, contacts, contact, contactId);
-                if(update.isDone){
+                if(update.isDone) {
                     console.info("UPDATE SUCCESS !!!");
-                }else{
+                } else {
                     console.error(`Opps: ${update.error}`);
                 }
                 break;
@@ -72,9 +72,9 @@ const inputContact = () => {
             case 4: {
                 let contactId = readline.question("ContactID: ");
                 let remove = control.removeContact(DATABASE_PATH, contacts, contactId);
-                if(remove.isDone){
+                if(remove.isDone) {
                     console.info(`REMOVE SUCCESS !!!`);
-                }else{
+                } else {
                     console.error(`Opps: ${remove.error}`);
                 }
                 break;
