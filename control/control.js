@@ -73,7 +73,7 @@ const searchContact = (contacts, keyword) => {
     return contacts.list.filter((item) => {
         let name = item.name.toLowerCase();
         keyword  = keyword.toLowerCase();
-        return name.includes(keyword) || item.phone.includes(keyword);
+        return item.id == keyword || name.includes(keyword) || item.phone.includes(keyword);
     })
 }
 
