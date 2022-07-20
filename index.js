@@ -22,7 +22,13 @@ const userChoose = () => {
 
 // Nhập thông tin contact
 const inputContact = () => {
-    let name = readline.question("Contact's name: ");
+    let name;
+    do {
+        name = readline.question("Contact's name: ");
+        if( !name.trim() )  {
+            console.log("Name is empty");
+        }
+    } while (!name.trim());
     let phone;
     do {
         phone = readline.question("Phone number: ");
@@ -80,7 +86,13 @@ const inputContact = () => {
                 break;
             }
             case 5: {
-                let keyword = readline.question("Phone or Name: ");
+                let keyword;
+                do {
+                    keyword = readline.question("Enter phone, name or Id: ");
+                    if(!keyword.trim()) {
+                        console.log("Keyword is empty");
+                    }
+                } while (!keyword.trim());
                 let searchResult = control.searchContact(contacts, keyword);
                 console.table(searchResult);
                 break;
